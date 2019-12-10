@@ -1,0 +1,8 @@
+<div cdkDropList (cdkDropListDropped)="drop($event)">
+    <h1>Posts</h1>
+    <ul class="list-group">
+        <app-post cdkDrag *ngFor="let post of posts" [post]="post">
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        </app-post>
+    </ul>
+</div>
