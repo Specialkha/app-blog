@@ -27,9 +27,11 @@ export class PostListComponent implements OnInit {
     this.postService.getPosts();
     this.postService.emitPosts();
   }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.posts, event.previousIndex, event.currentIndex);
     this.postService.savePosts();
   }
 
+  
 }

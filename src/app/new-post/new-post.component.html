@@ -8,7 +8,7 @@
 </div>
 <div class="form-group">
         <label for="text">Contenu de votre post</label>
-        <input type="text" class="form-control" id="title" formControlName="text">
+        <textarea type="text" class="form-control" id="text" formControlName="text" maxlength="300"></textarea>
     </div>
     <button class="btn btn-success" [disabled]="postForm.invalid" type="submit">Enregistrer</button>
         </form>

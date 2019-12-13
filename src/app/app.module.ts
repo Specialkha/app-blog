@@ -10,6 +10,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { PostListComponent } from './post-list/post-list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PostHeaderComponent } from './post-header/post-header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
+import { MatButtonModule, MatDialogModule } from '@angular/material';
 
 
 const appRoutes: Routes = [
@@ -26,7 +31,9 @@ const appRoutes: Routes = [
     PostComponent,
     NewPostComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    PostHeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +41,14 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     DragDropModule,
-    RouterModule.forRoot(appRoutes)
+    FontAwesomeModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MatButtonModule, MatDialogModule
   ],
+  // exports: [
+  //   MatButtonModule, MatDialogModule
+  // ],
   providers: [
     PostService
   ],
