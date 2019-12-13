@@ -12,7 +12,7 @@ export class PostService {
   posts: Post[] = [];
   postSubject = new Subject<Post[]>();
 
-  constructor() {
+  constructor() { 
     this.getPosts();
   }
 
@@ -21,32 +21,14 @@ export class PostService {
   }
 
   savePosts() {
-    var postx = [];
-    this.posts.forEach(post => {
-      postx.push({
-        title: post.title,
-        text: post.text,
-        loveIts: post.loveIts,
-        date: post.date ? post.date.getTime() : new Date()
-      });
-    });
-    firebase.database().ref('/posts').set(postx);
+    firebase.database().ref('/posts').set(this.posts);
     this.emitPosts();
   }
 
   getPosts() {
     firebase.database().ref('/posts')
       .on('value', (data) => {
-        var postx = data.val() ? data.val() : [];
-        this.posts = [];
-        postx.forEach(post => {
-          this.posts.push({
-            title: post.title,
-            text: post.text,
-            loveIts: post.loveIts,
-            date: new Date(post.date)
-          })
-        })
+        this.posts = data.val() ? data.val() : [];
         this.emitPosts();
       });
   }

@@ -25,14 +25,17 @@ export class NewPostComponent implements OnInit {
   initForm() {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
-      text: ['', Validators.required]
+      text: ['', Validators.required],
+      loveIts: ['0'],
+      timestamp: Date
     })
   }
 
   onSavePost() {
     const title = this.postForm.get('title').value;
     const text = this.postForm.get('text').value;
-    const newPost = new Post(title, text, 0, new Date());
+    const loveIts = this.postForm.get('loveIts').value;
+    const newPost = new Post(title, text, loveIts, new Date);
     this.postService.createNewPost(newPost);
     this.router.navigate(['/Posts']);
   }

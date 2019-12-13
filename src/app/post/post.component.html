@@ -1,8 +1,11 @@
-<li class="post-item" [ngClass]="{'list-group-item': true,
+<li [ngClass]="{'list-group-item': true,
                 'list-group-item-success': post.loveIts > 0 ,
                 'list-group-item-danger': post.loveIts < 0}">
-    <h4 class="title">{{ post.title }}</h4>
-    <p class="text">{{ post.text }}</p>
-    <p class="date">{{ post.date | date: 'yyyy/MM/dd h:mm:ss a' }}</p>
-    <app-post-header [post]="post" class="post-header"></app-post-header>
+    <h4>{{ post.title }}</h4>
+    <p>{{ post.text }}</p>
+    <p>{{ post.loveIts }}</p>
+    <p>{{ post.timestamp | date: 'yyyy/MM/dd h:mm:ss a' }}</p>
+    <button class="btn btn-success" (click)="onLikeit()">Like it</button>
+    <button class="btn btn-danger" (click)="onNotlikeit()">Don't Like it</button>
+    <button class="" (click)="onDeletePost(post)">Supprimer</button>
 </li>
