@@ -1,0 +1,32 @@
+.post-item {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    height: 266px;
+}
+
+.title {
+    grid-column: 2 / 6;
+    grid-row: 3/3;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.text {
+    grid-column: 2 / 9;
+    grid-row: 5/8;
+    text-align: justify;
+    word-break: break-all;
+}
+
+.date {
+    grid-column: 7/10;
+    grid-row: 9/9;
+    padding-top: 10px;
+}
+
+.post-header {
+    grid-column: 1/11;
+    grid-row: 1/2;
+}
