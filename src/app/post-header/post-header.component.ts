@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Post } from "../models/posts.models";
 import { PostService } from '../services/post.service';
 import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
+import { DragdisabledService } from '../services/dragdisabled.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class PostHeaderComponent implements OnInit {
 
   @Input() post: Post;
 
-  constructor(private postService: PostService, public modalService: ModalDialogService, public viewRef: ViewContainerRef) { }
+
+  constructor(private postService: PostService, private modalService: ModalDialogService, private viewRef: ViewContainerRef, private dragDisabledService: DragdisabledService) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,7 @@ export class PostHeaderComponent implements OnInit {
   }
 
   openNewDialog() {
+    this.dragDisabledService.removeDrag();
     this.modalService.openDialog(this.viewRef, {
       title: 'Confirmez-vous la suppression de ce post ?',
       childComponent: SimpleModalComponent,
@@ -47,13 +50,18 @@ export class PostHeaderComponent implements OnInit {
             setTimeout(() => {
               this.postService.removePost(this.post);
               resolve();
+              this.dragDisabledService.allowDrag()
             }, 20);
           })
         },
         {
           text: 'Annuler',
           buttonClass: 'btn btn-danger',
-        }
+          onAction: () => new Promise((reject: any) => {
+            reject();
+            this.dragDisabledService.allowDrag()
+          })
+        },
       ]
     });
   }

@@ -15,6 +15,7 @@ import { PostHeaderComponent } from './post-header/post-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { ModalDialogModule } from 'ngx-modal-dialog';
+import { DragdisabledService } from './services/dragdisabled.service';
 
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     ModalDialogModule.forRoot()
   ],
   providers: [
-    PostService
+    PostService,
+    DragdisabledService
   ],
   bootstrap: [AppComponent]
 })

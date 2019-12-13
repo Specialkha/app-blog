@@ -4,7 +4,6 @@
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     height: 266px;
-    margin: 10px;
 }
 
 .title {
@@ -22,7 +21,7 @@
 }
 
 .date {
-    grid-column: 7/10;
+    grid-column: 9/11;
     grid-row: 9/9;
     padding-top: 10px;
 }
