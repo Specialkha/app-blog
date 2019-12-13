@@ -1,4 +1,4 @@
-<div id="list-content" cdkDropList (cdkDropListDropped)="drop($event)">
+<div id="list-content" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="posts.disabled">
     <h1>Posts</h1>
     <ul class="list-group">
         <app-post cdkDrag *ngFor="let post of posts" [post]="post">      

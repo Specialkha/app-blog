@@ -14,8 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PostHeaderComponent } from './post-header/post-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
-
+import { ModalDialogModule } from 'ngx-modal-dialog';
 
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
@@ -33,7 +32,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     PostListComponent,
     PostHeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,11 +43,8 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatButtonModule, MatDialogModule
+    ModalDialogModule.forRoot()
   ],
-  // exports: [
-  //   MatButtonModule, MatDialogModule
-  // ],
   providers: [
     PostService
   ],

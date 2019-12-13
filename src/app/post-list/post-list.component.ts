@@ -5,7 +5,6 @@ import { PostService } from '../services/post.service';
 import { Router } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
-
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
@@ -33,5 +32,5 @@ export class PostListComponent implements OnInit {
     this.postService.savePosts();
   }
 
-  
+
 }

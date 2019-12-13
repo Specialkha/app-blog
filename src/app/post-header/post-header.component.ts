@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Post } from "../models/posts.models";
 import { PostService } from '../services/post.service';
+import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class PostHeaderComponent implements OnInit {
 
   @Input() post: Post;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, public modalService: ModalDialogService, public viewRef: ViewContainerRef) { }
 
   ngOnInit() {
   }
@@ -28,7 +29,32 @@ export class PostHeaderComponent implements OnInit {
     this.postService.savePosts();
   }
 
-  onDelete(post: Post) {
-    this.postService.removePost(post);
+  openNewDialog() {
+    this.modalService.openDialog(this.viewRef, {
+      title: 'Confirmez-vous la suppression de ce post ?',
+      childComponent: SimpleModalComponent,
+      data: {
+        text: 'Cette action est irréversible.'
+      },
+      settings: {
+        closeButtonClass: 'close theme-icon-close'
+      },
+      actionButtons: [
+        {
+          text: 'Valider',
+          buttonClass: 'btn btn-success',
+          onAction: () => new Promise((resolve: any) => {
+            setTimeout(() => {
+              this.postService.removePost(this.post);
+              resolve();
+            }, 20);
+          })
+        },
+        {
+          text: 'Annuler',
+          buttonClass: 'btn btn-danger',
+        }
+      ]
+    });
   }
 }
