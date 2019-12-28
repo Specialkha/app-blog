@@ -32,7 +32,6 @@ const appRoutes: Routes = [
   { path: "**", redirectTo: 'posts' }
 ]
 
-const nodeExternals = require('webpack-node-externals');
 
 @NgModule({
   declarations: [
