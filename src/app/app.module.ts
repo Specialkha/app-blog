@@ -21,7 +21,6 @@ import { FormModalComponent } from './form-modal/form-modal.component';
 import { UserService } from './services/user.service';
 import { AppUserListComponent } from './app-user-list/app-user-list.component';
 import { NewUserComponent } from './new-user/new-user.component';
-import {nodeExternals} from 'webpack-node-externals';
 
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },

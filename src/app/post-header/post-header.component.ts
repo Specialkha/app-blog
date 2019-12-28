@@ -34,14 +34,7 @@ export class PostHeaderComponent implements OnInit {
     this.post.loveIts--;
   }
 
-  onSaveList() {
-    this.noSort = false;
-    if (!this.noSort)
-      this.postService.savePosts();
-  }
-
-  openNewDialogDelete() {
-    this.dragDisabledService.removeDrag();
+  openNewDialog() {
     this.modalService.openDialog(this.viewRef, {
       title: 'Confirmez-vous la suppression de ce post ?',
       childComponent: SimpleModalComponent,
@@ -59,31 +52,14 @@ export class PostHeaderComponent implements OnInit {
             setTimeout(() => {
               this.postService.removePost(this.post);
               resolve();
-              this.dragDisabledService.allowDrag()
             }, 20);
           })
         },
         {
           text: 'Annuler',
           buttonClass: 'btn btn-danger',
-          onAction: () => new Promise((reject: any) => {
-            reject();
-            this.dragDisabledService.allowDrag()
-          })
-        },
+        }
       ]
     });
   }
-
-  openFormModal() {
-    const modalRef = this.modalServices.open(FormModalComponent);
-    modalRef.componentInstance.id = 10; // should be the id
-    modalRef.result.then((result) => {
-      let newPost = { title: result.titre, text: result.texte, loveIts: this.post.loveIts, date: new Date() };
-      this.postService.editPost(newPost, this.nbPost);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
-
 }

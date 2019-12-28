@@ -5,5 +5,5 @@
     <h4 class="title">{{ post.title }}</h4>
     <p class="text">{{ post.text }}</p>
     <p class="date">{{ post.date | date: 'yyyy/MM/dd h:mm:ss a' }}</p>
-
+    <app-post-header [post]="post" class="post-header"></app-post-header>
 </li>
