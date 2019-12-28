@@ -16,14 +16,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { ModalDialogModule } from 'ngx-modal-dialog';
 import { DragdisabledService } from './services/dragdisabled.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormModalComponent } from './form-modal/form-modal.component';
+import { UserService } from './services/user.service';
+import { AppUserListComponent } from './app-user-list/app-user-list.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import {nodeExternals} from 'webpack-node-externals';
 
 const appRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
   { path: 'newpost', component: NewPostComponent },
+  { path: 'users', component: AppUserListComponent },
+  { path: 'new-user', component: NewUserComponent },
   { path: "", redirectTo: 'posts', pathMatch: 'full' },
   { path: "**", redirectTo: 'posts' }
 ]
 
+const nodeExternals = require('webpack-node-externals');
 
 @NgModule({
   declarations: [
@@ -34,6 +43,9 @@ const appRoutes: Routes = [
     PostListComponent,
     PostHeaderComponent,
     FooterComponent,
+    FormModalComponent,
+    AppUserListComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
@@ -44,12 +56,17 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    ModalDialogModule.forRoot()
+    ModalDialogModule.forRoot(),
+    NgbModule
   ],
   providers: [
     PostService,
-    DragdisabledService
+    DragdisabledService,
+    UserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    FormModalComponent
+  ]
 })
 export class AppModule { }

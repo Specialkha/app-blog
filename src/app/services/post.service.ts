@@ -30,6 +30,7 @@ export class PostService {
         date: post.date ? post.date.getTime() : new Date()
       });
     });
+    postx.sort((a, b) => b.loveIts-a.loveIts);
     firebase.database().ref('/posts').set(postx);
     this.emitPosts();
   }
@@ -45,8 +46,9 @@ export class PostService {
             text: post.text,
             loveIts: post.loveIts,
             date: new Date(post.date)
-          })
-        })
+          });
+        });
+        this.posts.sort((a, b) => b.loveIts-a.loveIts);
         this.emitPosts();
       });
   }
@@ -65,6 +67,11 @@ export class PostService {
       }
     );
     this.posts.splice(postIndexToRemove, 1);
+    this.savePosts();
+  }
+
+  editPost(post: Post, nbPost: number) {
+    this.posts.splice(nbPost, 1, post);
     this.savePosts();
   }
 }

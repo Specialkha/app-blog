@@ -3,6 +3,8 @@ import { Post } from "../models/posts.models";
 import { PostService } from '../services/post.service';
 import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
 import { DragdisabledService } from '../services/dragdisabled.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormModalComponent } from '../form-modal/form-modal.component';
 
 
 @Component({
@@ -14,24 +16,31 @@ export class PostHeaderComponent implements OnInit {
 
 
   @Input() post: Post;
+  @Input() id: number;
+  @Input() nbPost: number;
 
+  noSort: boolean = false;
 
-  constructor(private postService: PostService, private modalService: ModalDialogService, private viewRef: ViewContainerRef, private dragDisabledService: DragdisabledService) { }
+  constructor(private postService: PostService, private modalService: ModalDialogService, private viewRef: ViewContainerRef, private dragDisabledService: DragdisabledService, private modalServices: NgbModal) { }
 
   ngOnInit() {
   }
 
   onLikeit() {
     this.post.loveIts++;
-    this.postService.savePosts();
   }
 
   onNotlikeit() {
     this.post.loveIts--;
-    this.postService.savePosts();
   }
 
-  openNewDialog() {
+  onSaveList() {
+    this.noSort = false;
+    if (!this.noSort)
+      this.postService.savePosts();
+  }
+
+  openNewDialogDelete() {
     this.dragDisabledService.removeDrag();
     this.modalService.openDialog(this.viewRef, {
       title: 'Confirmez-vous la suppression de ce post ?',
@@ -65,4 +74,16 @@ export class PostHeaderComponent implements OnInit {
       ]
     });
   }
+
+  openFormModal() {
+    const modalRef = this.modalServices.open(FormModalComponent);
+    modalRef.componentInstance.id = 10; // should be the id
+    modalRef.result.then((result) => {
+      let newPost = { title: result.titre, text: result.texte, loveIts: this.post.loveIts, date: new Date() };
+      this.postService.editPost(newPost, this.nbPost);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
 }

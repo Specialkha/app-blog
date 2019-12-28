@@ -10,6 +10,7 @@ import { Post } from "../models/posts.models";
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
+  @Input() nbPost: number;
 
 
   constructor() { }
