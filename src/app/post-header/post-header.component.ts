@@ -2,12 +2,8 @@ import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Post } from "../models/posts.models";
 import { PostService } from '../services/post.service';
 import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
-<<<<<<< HEAD
-import { DragdisabledService } from '../services/dragdisabled.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormModalComponent } from '../form-modal/form-modal.component';
-=======
->>>>>>> parent of 45d7d02... modal working and dragging disabled
 
 
 @Component({
@@ -24,7 +20,7 @@ export class PostHeaderComponent implements OnInit {
 
   noSort: boolean = false;
 
-  constructor(private postService: PostService, private modalService: ModalDialogService, private viewRef: ViewContainerRef, private dragDisabledService: DragdisabledService, private modalServices: NgbModal) { }
+  constructor(private postService: PostService, private modalService: ModalDialogService, private viewRef: ViewContainerRef, private modalServices: NgbModal) { }
 
   ngOnInit() {
   }

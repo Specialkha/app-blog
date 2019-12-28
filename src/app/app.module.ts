@@ -15,7 +15,6 @@ import { PostHeaderComponent } from './post-header/post-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { ModalDialogModule } from 'ngx-modal-dialog';
-import { DragdisabledService } from './services/dragdisabled.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormModalComponent } from './form-modal/form-modal.component';
 import { UserService } from './services/user.service';
@@ -59,7 +58,6 @@ const appRoutes: Routes = [
   ],
   providers: [
     PostService,
-    DragdisabledService,
     UserService
   ],
   bootstrap: [AppComponent],
