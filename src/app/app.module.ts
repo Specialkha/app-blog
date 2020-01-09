@@ -16,11 +16,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { ModalDialogModule } from 'ngx-modal-dialog';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormModalComponent } from './form-modal/form-modal.component';
 import { UserService } from './services/user.service';
 import { AppUserListComponent } from './app-user-list/app-user-list.component';
 import { NewUserComponent } from './new-user/new-user.component';
+=======
+>>>>>>> parent of 45d7d02... modal working and dragging disabled
 =======
 >>>>>>> parent of 45d7d02... modal working and dragging disabled
 
@@ -61,8 +64,12 @@ const appRoutes: Routes = [
   ],
   providers: [
 <<<<<<< HEAD
+<<<<<<< HEAD
     PostService,
     UserService
+=======
+    PostService
+>>>>>>> parent of 45d7d02... modal working and dragging disabled
 =======
     PostService
 >>>>>>> parent of 45d7d02... modal working and dragging disabled
