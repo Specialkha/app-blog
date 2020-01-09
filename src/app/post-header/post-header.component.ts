@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { Post } from "../models/posts.models";
 import { PostService } from '../services/post.service';
 import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
+import { DragdisabledService } from '../services/dragdisabled.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormModalComponent } from '../form-modal/form-modal.component';
 
