@@ -1,14 +1,11 @@
-<<<<<<< HEAD
 <div id="list-content" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="!dragEnabled">
     <h1>My-Post</h1>
     <ul class="list-group">
         <app-post cdkDrag *ngFor="let post of posts; let i=index" [nbPost]="i" [post]="post"> 
-=======
 <div id="list-content" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListDisabled]="posts.disabled">
     <h1>Posts</h1>
     <ul class="list-group">
         <app-post cdkDrag *ngFor="let post of posts" [post]="post">      
->>>>>>> parent of 45d7d02... modal working and dragging disabled
             <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         </app-post>
     </ul>
